@@ -20,10 +20,8 @@ export default {
   created() {
     this.connection = new WebSocket("ws://localhost:5000/testws");
     this.connection.onmessage = function (event) {
-      console.log(this);
-      console.log(event);
-      console.log(event.data);
-    };
+      this.eventData = event.data;
+    }.bind(this);
   },
   computed: {
     getData() {
